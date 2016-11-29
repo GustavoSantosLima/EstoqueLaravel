@@ -27,4 +27,4 @@
         <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
 
-@stop
+@endsection

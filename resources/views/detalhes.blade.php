@@ -11,4 +11,4 @@
         <li><b>Quantidade em Estoque:</b> {{ $produto->quantidade }}</li>
     </ul>
 
-@stop
+@endsection

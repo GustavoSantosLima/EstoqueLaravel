@@ -3,7 +3,7 @@
 @section('title', 'Listagem')
 
 @section('content')
-    <h1>Listagem de Produtos <a href="/produtos/novo" class="btn btn-primary pull-right">Adicionar Produto</a></h1>
+    <h1>Listagem de Produtos</h1>
     @if(old('nome'))
         <div class="alert alert-success">
             Produto {{ old('nome') }} adicionado com sucesso!
@@ -15,6 +15,7 @@
             <td>{{ $p->nome }}</td>
             <td>{{ $p->valor }}</td>
             <td>{{ $p->descricao }}</td>
+            <td>{{ $p->categoria->nome }}</td>
             <td>{{ $p->peso }}</td>
             <td>{{ $p->quantidade }}</td>
             <td>

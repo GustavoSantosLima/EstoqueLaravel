@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Estoque\Http\Controllers;
 
-use App\Http\Requests\ProdutoRequest;
-use App\Produto;
+use Estoque\Categoria;
+use Estoque\Http\Requests\ProdutoRequest;
+use Estoque\Produto;
 use Request;
 
 class ProdutoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('autorizador');
+        $this->middleware('auth');
     }
 
     public function lista(){
@@ -24,7 +25,7 @@ class ProdutoController extends Controller
     }
 
     public function novo(){
-        return view('formulario');
+        return view('formulario')->with('categorias', Categoria::all());
     }
 
     public function adiciona(ProdutoRequest $request){

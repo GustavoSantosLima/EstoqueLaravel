@@ -4,4 +4,4 @@
 
     <p>O produto Teste foi adicionado com sucesso!</p>
 
-@stop
+@endsection
