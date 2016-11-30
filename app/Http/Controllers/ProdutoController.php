@@ -9,13 +9,10 @@ use Request;
 
 class ProdutoController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     public function lista(){
-        $produtos = Produto::all();
+        $produtos = Produto::paginate(10);
         return view('listagem')->with('produtos', $produtos);
     }
 

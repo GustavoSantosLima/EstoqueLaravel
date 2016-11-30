@@ -35,10 +35,10 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li class="{{ Request::is('/') ? 'active' : '' }}">
-                                <a href="{{ action('ProdutoController@lista') }}">Listagem</a>
+                                <a href="{{ route('produtos') }}">Listagem</a>
                             </li>
                             <li class="{{ Request::is('produtos/novo') ? 'active' : '' }}">
-                                <a href="{{ action('ProdutoController@novo') }}">Novo Produto</a>
+                                <a href="{{ route('produto.novo') }}">Novo Produto</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

@@ -11,12 +11,16 @@
 |
 */
 
-Route::get('/', 'ProdutoController@lista');
-Route::get('/produtos/novo', 'ProdutoController@novo');
-Route::post('/produtos/adiciona', 'ProdutoController@adiciona');
-Route::get('/produtos/mostra/{id}', 'ProdutoController@mostra')->where('id', '[0-9]+');
-Route::get('/produtos/remove/{id}', 'ProdutoController@remove')->where('id', '[0-9]+');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/', function (){ return redirect('/produtos'); });
+    Route::get('/produtos', 'ProdutoController@lista')->name('produtos');
+
+    Route::group(['prefix' => 'produto', 'as' => 'produto.'], function (){
+        Route::get('novo', 'ProdutoController@novo')->name('novo');
+        Route::post('adiciona', 'ProdutoController@adiciona')->name('adiciona');
+        Route::get('mostra/{id}', 'ProdutoController@mostra')->where('id', '[0-9]+')->name('mostra');
+        Route::get('remove/{id}', 'ProdutoController@remove')->where('id', '[0-9]+')->name('remove');
+    });
+});
