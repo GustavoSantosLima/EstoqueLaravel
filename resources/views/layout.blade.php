@@ -9,10 +9,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title')</title>
         <!-- Scripts -->
-        <script>
-            window.Laravel = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-            ]); ?>
+        <script type="application/javascript">
+            window.Laravel = {'crsfToken' : '{{ csrf_token() }}'}
         </script>
     </head>
     <body>
@@ -34,10 +32,10 @@
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
-                            <li class="{{ Request::is('/') ? 'active' : '' }}">
+                            <li class="{{ Request::is('produtos') ? 'active' : '' }}">
                                 <a href="{{ route('produtos') }}">Listagem</a>
                             </li>
-                            <li class="{{ Request::is('produtos/novo') ? 'active' : '' }}">
+                            <li class="{{ Request::is('produto/novo') ? 'active' : '' }}">
                                 <a href="{{ route('produto.novo') }}">Novo Produto</a>
                             </li>
                             <li class="dropdown">
